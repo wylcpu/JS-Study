@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * 使用单例模式创建遮罩层；
+     */
+    var createMask = function () {
+        var mask;
+        return function () {
+            return mask || document.body.appendChild(document.createElement('div'));
+        }
+    }();
+</script>
+</html>

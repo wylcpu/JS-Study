@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<fieldset>
+    <legend>交易对手信息</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>客户号</td>
+            <td><input id='cNo' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[32]']"/></span>
+            </td>
+            <td>客户名称</td>
+            <td><input id='partyName' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[100]'], disabled:true"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>客户类型</td>
+            <td><input id='party_bigkind' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[10]'], disabled:true"/></span>
+            </td>
+            <td>行业大类</td>
+            <td><input id='big_kind' class="easyui-slcombobox"
+                       data-options="required:false,width:180, dict:'GBT4754_2011', attachString:'---请选择---'"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>行业小类</td>
+            <td><input id='small_kind' class="easyui-slcombobox"
+                       data-options="required:false,width:180, dict:'null', attachString:'---请选择---'"/></span></td>
+            <td>联系人</td>
+            <td><input id='contact' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[50]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>联系电话</td>
+            <td><input id='contactPhone' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[50]', 'mobile']"/></span>
+            </td>
+            <td>联系地址</td>
+            <td><input id='contactAddr' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[100]']"/></span>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+<fieldset>
+    <legend>审批信息</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>审批单标题</td>
+            <td><input id='dealTitle' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[35]']"/></span>
+            </td>
+            <td class='red-star'>审批单号</td>
+            <td><input id='dealNo' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[32]'], disabled:true"/>&nbsp;<span
+                    class='tips'>保存后自动生成</td>
+        </tr>
+        <tr>
+            <td>审批发起人</td>
+            <td><input id='sponsor' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, value:eval('_userId'), text:eval('_userName'), validType:['maxLength[20]'], disabled:true"/>&nbsp;<span
+                    class='tips'>当前登录的客户经理</td>
+            <td>审批发起机构</td>
+            <td><input id='sponInst' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, value:eval('_instId'), text:eval('_instName'), validType:['maxLength[20]'], disabled:true"/>&nbsp;<span
+                    class='tips'>客户经理所属的机构</td>
+        </tr>
+        <tr>
+            <td>审批日期</td>
+            <td><input id='aDate' class="easyui-sldatebox"
+                       data-options="required:false,panelHeight:200,width:180,editable:false, value:eval('_bizDate'), disabled:true"/>&nbsp;<span
+                    class='tips'>发起审批单据具体时间</td>
+            <td>手机号码</td>
+            <td><input id='sponsorPhone' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, value:eval('_userCellphone'), validType:['maxLength[11]'], disabled:true"/></span>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+<fieldset>
+    <legend>业务信息</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>币种</td>
+            <td><input id='ccy' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'CNY', dict:'Currency', attachString:'---请选择---'"/></span>
+            </td>
+            <td class='red-star'>会计四分类</td>
+            <td><input id='invtype' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'3', dict:'AccfiscaSubject', attachString:'---请选择---'"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>本金</td>
+            <td><input id='amt' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, min:0, max:999999999999, precision:2, groupSeparator:','"/></span>
+            </td>
+            <td class='red-star'>成交金额</td>
+            <td><input id='procAmt' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, min:0, max:999999999999, precision:2, groupSeparator:','"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>利率类型</td>
+            <td><input id='rateType' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'1', dict:'rateType', attachString:'---请选择---'"/></span>
+            </td>
+            <td class='red-star'>基准利率代码</td>
+            <td><input id='rateCode' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[20]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>浮息点差(BP)</td>
+            <td><input id='rateDiff' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, value:'0', textTimes:10000, min:0, max:100, precision:4, groupSeparator:','"/></span>
+            </td>
+            <td class='red-star'>利率(%)</td>
+            <td><input id='contractRate' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, textTimes:100, min:0, max:100, precision:6"/></span></td>
+        </tr>
+        <tr>
+            <td class='red-star'>起息日期</td>
+            <td><input id='vDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false, value:eval('_bizDate')"/>&nbsp;<span
+                    class='tips'>计算利息开始</td>
+            <td class='red-star'>划款日期</td>
+            <td><input id='tDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false, value:eval('_bizDate')"/>&nbsp;<span
+                    class='tips'>计算占款开始</td>
+        </tr>
+        <tr>
+            <td class='red-star'>到期日期</td>
+            <td><input id='mDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false, value:eval('_bizDate')"/>&nbsp;<span
+                    class='tips'>计算利息结束</td>
+            <td class='red-star'>到账日期</td>
+            <td><input id='meDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false, value:eval('_bizDate')"/>&nbsp;<span
+                    class='tips'>计算占款结束</td>
+        </tr>
+        <tr>
+            <td class='red-star'>计息天数</td>
+            <td><input id='term' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, value:'0', min:0, max:99999999999, precision:0, disabled:true"/>&nbsp;<span
+                    class='tips'>自动计算</td>
+            <td class='red-star'>占款期限（天）</td>
+            <td><input id='occupTerm' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, value:'0', min:0, max:999, precision:0, disabled:true"/>&nbsp;<span
+                    class='tips'>自动计算</td>
+        </tr>
+        <tr>
+            <td class='red-star'>还本频率</td>
+            <td><input id='amtFre' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'0', dict:'CouponFrequently', attachString:'---请选择---'"/></span>
+            </td>
+            <td class='red-star'>计息基础</td>
+            <td><input id='basis' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'Actual/360', dict:'DayCounter', attachString:'---请选择---'"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>收息频率</td>
+            <td><input id='intFre' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'0', dict:'CouponFrequently', attachString:'---请选择---'"/></span>
+            </td>
+            <td>N个工作日后收息</td>
+            <td><input id='nDays' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, textTimes:1, min:0, max:999, precision:0"/></span></td>
+        </tr>
+        <tr>
+            <td class='red-star'>首次收息日</td>
+            <td><input id='sDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false, value:eval('_bizDate')"/></span>
+            </td>
+            <td class='red-star'>最后收息日</td>
+            <td><input id='eDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false, value:eval('_bizDate')"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>到期利息(元)</td>
+            <td><input id='mInt' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, min:0, max:999999999999, precision:2, groupSeparator:',', disabled:true"/>&nbsp;<span
+                    class='tips'>自动计算</td>
+            <td class='red-star'>到期金额(元)</td>
+            <td><input id='mAmt' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, min:0, max:999999999999, precision:2, groupSeparator:',', disabled:true"/>&nbsp;<span
+                    class='tips'>自动计算</td>
+        </tr>
+        <tr>
+            <td class='red-star'>收息方式</td>
+            <td><input id='intType' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'2', disabled:true, dict:'intType', attachString:'---请选择---'"/></span>
+            </td>
+            <td class='red-star'>折溢价金额</td>
+            <td><input id='disAmt' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, min:0, max:999999999999, precision:2, groupSeparator:',', disabled:true"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>先收息截止日期</td>
+            <td><input id='intMDate' class="easyui-sldatebox"
+                       data-options="required:true,panelHeight:200,width:180,editable:false"/></span></td>
+            <td>先收息天数</td>
+            <td><input id='intTerm' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, min:0, max:9999, groupSeparator:',', disabled:true"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>先收息金额</td>
+            <td><input id='intAmt' class="easyui-slnumberbox"
+                       data-options="required:true,width:180, min:0, max:1000000000000000, precision:2, groupSeparator:','"/></span>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+<fieldset>
+    <legend>清算路径</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>本方账号</td>
+            <td><input id='selfAccCode' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, value:'40700030039', validType:['maxLength[50]']"/></span>
+            </td>
+            <td class='red-star'>对手方账号</td>
+            <td><input id='partyAccCode' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[50]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>本方账户名称</td>
+            <td><input id='selfAccName' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, value:'青岛银行', validType:['maxLength[100]']"/></span>
+            </td>
+            <td class='red-star'>对手方账户名称</td>
+            <td><input id='partyAccName' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[100]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>本方开户行行号</td>
+            <td><input id='selfBankCode' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, value:'313452060150', validType:['maxLength[30]']"/></span>
+            </td>
+            <td class='red-star'>对手方开户行行号</td>
+            <td><input id='partyBankCode' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[30]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>本方开户行名称</td>
+            <td><input id='selfBankName' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, value:'青岛银行', validType:['maxLength[100]']"/></span>
+            </td>
+            <td class='red-star'>对手方开户行名称</td>
+            <td><input id='partyBankName' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[100]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>清算方式</td>
+            <td><input id='acctType' class="easyui-slcombobox"
+                       data-options="required:true,width:180, initValue:'0', dict:'TransferType', attachString:'---请选择---'"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>缴款信息备注</td>
+            <td colspan='3'><input id='settlRemark' class="easyui-sltextbox"
+                                   data-options="required:false, multiline:true, height:44,width:875.0, validType:['maxLength[200]']"/></span>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+<fieldset>
+    <legend>业务结构</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>资产名称</td>
+            <td><input id='productName' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[200]']"/></span>
+            </td>
+            <td class='red-star'>资产编码</td>
+            <td><input id='productCode' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[20]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>成本中心</td>
+            <td><input id='cost' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[20]']"/></span>
+            </td>
+            <td class='red-star'>投资组合</td>
+            <td><input id='port' class="easyui-sltextbox"
+                       data-options="required:true, multiline:false, height:22,width:180, validType:['maxLength[20]', 'length[1,20]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>交易类型</td>
+            <td><input id='transType' class="easyui-slcombobox"
+                       data-options="required:false,width:180, dict:'transType', attachString:'---请选择---'"/></span></td>
+            <td>匹配负债种类</td>
+            <td><input id='matchLiabType' class="easyui-slcombobox"
+                       data-options="required:false,width:180, dict:'matchLiabType', attachString:'---请选择---'"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td class='red-star'>投资方式</td>
+            <td><input id='invWay' class="easyui-slcombobox"
+                       data-options="required:true,width:180, dict:'invWay', attachString:'---请选择---'"/></span></td>
+            <td class='red-star'>资金投向</td>
+            <td><input id='fundInvestment' class="easyui-slcombobox"
+                       data-options="required:true,width:180, dict:'GBT4754_2011', attachString:'---请选择---'"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>标的物总数量</td>
+            <td><input id='targetsQty' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, min:0, max:999999999999, precision:2, groupSeparator:','"/></span>
+            </td>
+            <td>标的物定价基准</td>
+            <td><input id='targetPricingBenchmark' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, min:0, max:999999999999, precision:2, groupSeparator:','"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>成本价格</td>
+            <td><input id='costPrice' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, min:0, max:999999999999, precision:2"/></span></td>
+            <td>劣后金额（亿）</td>
+            <td><input id='afterTheAmount' class="easyui-slnumberbox"
+                       data-options="required:false,width:180, min:0, max:999999999999, precision:2, groupSeparator:','"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>营销机构</td>
+            <td><input id='marketingOrg' class="easyui-slcombotree"
+                       data-options="required:false,width:180, data:CommonUtil.serverData.fullInstitutionInfo"/></span>
+            </td>
+            <td>客户经理</td>
+            <td><input id='accountManager' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[35]']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>是否行内非标</td>
+            <td><input id='isNonStandard' class="easyui-slcombobox"
+                       data-options="required:false,width:180, dict:'YesNo', attachString:'---请选择---'"/></span></td>
+            <td>资料影像</td>
+            <td><a id='image' class='easyui-sllinkbutton' data-options="plain:false,iconCls:'icon-search'"
+                   data-json="{'attachTreeTemp':null,'componet':null,'defKey':null,'defText':null,'defUrl':null,'defValue':null,'fldName':'image','fldNo':'44','fldType':'0','formCols':1,'formLength':null,'formMax':null,'formMin':null,'formMultiple':null,'formName':'资料影像','formPrecision':null,'formRows':1,'formSplit':null,'formTimes':null,'formTips':null,'formType':'componet','formValid':null,'isDisabled':'0','isMandatory':'0','lastUpdate':null,'useFlag':null,'validParam':null}">资料影像管理</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td>补充说明</td>
+            <td colspan='3'><input id='remarkNote' class="easyui-sltextbox"
+                                   data-options="required:false, multiline:true, height:44,width:875.0, validType:['maxLength[200]']"/></span>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+<fieldset>
+    <legend>基础资产</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>结构化融资基础资产</td>
+            <td><a id='baseAssetStruct' class='easyui-sllinkbutton' data-options="plain:false,iconCls:'icon-search'"
+                   data-json="{'attachTreeTemp':null,'componet':null,'defKey':null,'defText':null,'defUrl':null,'defValue':null,'fldName':'baseAssetStruct','fldNo':'88','fldType':'0','formCols':1,'formLength':null,'formMax':null,'formMin':null,'formMultiple':null,'formName':'结构化融资基础资产','formPrecision':null,'formRows':1,'formSplit':null,'formTimes':null,'formTips':null,'formType':'componet','formValid':null,'isDisabled':'0','isMandatory':'1','lastUpdate':null,'useFlag':null,'validParam':null}">结构化融资基础资产管理</a></span>
+            </td>
+            <td>通道费用</td>
+            <td><a id='feesPassAgeWay' class='easyui-sllinkbutton' data-options="plain:false,iconCls:'icon-search'"
+                   data-json="{'attachTreeTemp':null,'componet':null,'defKey':null,'defText':null,'defUrl':null,'defValue':null,'fldName':'feesPassAgeWay','fldNo':'9','fldType':'0','formCols':1,'formLength':null,'formMax':null,'formMin':null,'formMultiple':null,'formName':'通道费用','formPrecision':null,'formRows':1,'formSplit':null,'formTimes':null,'formTips':null,'formType':'componet','formValid':null,'isDisabled':'0','isMandatory':'0','lastUpdate':null,'useFlag':null,'validParam':null}">通道费用管理</a></span>
+            </td>
+        </tr>
+        <tr>
+            <td>其他费用</td>
+            <td><a id='cashFeeBtn' class='easyui-sllinkbutton' data-options="plain:false,iconCls:'icon-search'"
+                   data-json="{'attachTreeTemp':null,'componet':null,'defKey':null,'defText':null,'defUrl':null,'defValue':null,'fldName':'cashFeeBtn','fldNo':'689','fldType':'0','formCols':null,'formLength':null,'formMax':null,'formMin':null,'formMultiple':null,'formName':'其他费用','formPrecision':null,'formRows':null,'formSplit':null,'formTimes':null,'formTips':null,'formType':'componet','formValid':null,'isDisabled':null,'isMandatory':'0','lastUpdate':null,'useFlag':null,'validParam':null}">其他费用管理</a></span>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+<fieldset>
+    <legend>额度管理</legend>
+    <table class='form_table' cols='4'>
+        <tr>
+            <td class='red-star'>额度管理</td>
+            <td><input id='amtManage' class="easyui-slcombobox"
+                       data-options="required:true,width:180, dict:'amtManage', attachString:'---请选择---'"/></span></td>
+            <td>企业授信客户号</td>
+            <td><input id='creditCust' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[32]', 'number']"/></span>
+            </td>
+        </tr>
+        <tr>
+            <td>授信单号</td>
+            <td><input id='dealNoticeNo' class="easyui-sltextbox"
+                       data-options="required:false, multiline:false, height:22,width:180, validType:['maxLength[35]', 'alphanum'], disabled:true"/>&nbsp;<span
+                    class='tips'>保存后生成</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</fieldset>
+<br/>
+
+</body>
+</html>
